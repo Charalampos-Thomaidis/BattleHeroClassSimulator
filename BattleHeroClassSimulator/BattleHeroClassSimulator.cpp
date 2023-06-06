@@ -7,7 +7,7 @@ int main()
     std::cout << "Version: 2.0" << std::endl;
     std::cout << "Created by: Charalampos Thomaidis" << std::endl;
 
-    int choice;
+    int menuChoice;
     do 
     {
         //Main Menu
@@ -16,10 +16,10 @@ int main()
         std::cout << "2. Start \n";
         std::cout << "3. Exit \n" << std::endl;
         std::cout << "~Enter your choice: ";
-        choice = getPlayerChoice(1, 3);
+        menuChoice = getPlayerChoice(1, 3);
 
         // If choice is 1 then display on console the help information for the program
-        if (choice == 1) 
+        if (menuChoice == 1) 
         {
             std::cout << std::endl << "~Help: This program simulates a battle between two players. \n"
                 "~Each player has a name, class, and weapon. \n"
@@ -32,7 +32,7 @@ int main()
         }
 
         // If choice is 2 start the round
-        else if (choice == 2) 
+        else if (menuChoice == 2) 
         {
             std::string player1Name;
             std::string player2Name;
@@ -139,13 +139,12 @@ int main()
             saveResultsToFile(player1.getName(), player2.getName(), winner);
 
             // Ask if the user wants to print the results to the console
-            std::cout << "~Do you want to print the results to the console? (Yes/No): \n" << std::endl;
-            std::string printChoice;
+            std::cout << "~Do you want to print the results to the console? (1: Yes / 2: No): \n" << std::endl;
             std::cout << "~Enter your choice: ";
-            std::cin >> printChoice;
+            int printChoice = getPlayerChoice(1, 2);
             std::cout << std::endl;
 
-            if (printChoice == "Yes" || printChoice == "yes")
+            if (printChoice == 1)
             {
                 std::cout << "Player1: " << player1.getName() << std::endl;
                 std::cout << "Player2: " << player2.getName() << std::endl;
@@ -153,7 +152,7 @@ int main()
             }
         }
     } 
-    while (choice != 3);
+    while (menuChoice != 3);
 
     return 0;
 }
