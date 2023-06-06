@@ -4,18 +4,14 @@ int main()
 {
     // Welcome the user to the program
     std::cout << "Welcome to the Battle Hero Simulator!" << std::endl;
-    std::cout << "Version: 2.0" << std::endl;
+    std::cout << "Version: 3.0" << std::endl;
     std::cout << "Created by: Charalampos Thomaidis" << std::endl;
 
     int menuChoice;
     do 
     {
         //Main Menu
-        std::cout << std::endl << "Main Menu: \n" << std::endl;
-        std::cout << "1. Help \n";
-        std::cout << "2. Start \n";
-        std::cout << "3. Exit \n" << std::endl;
-        std::cout << "~Enter your choice: ";
+        diplayMenu();
         menuChoice = getPlayerChoice(1, 3);
 
         // If choice is 1 then display on console the help information for the program
@@ -144,6 +140,7 @@ int main()
             int printChoice = getPlayerChoice(1, 2);
             std::cout << std::endl;
 
+            // Print the results
             if (printChoice == 1)
             {
                 std::cout << "Player1: " << player1.getName() << std::endl;

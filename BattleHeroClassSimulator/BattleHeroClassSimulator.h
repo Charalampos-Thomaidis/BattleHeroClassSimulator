@@ -7,6 +7,7 @@
 #include <fstream>
 #include <limits>
 
+// Contains the classes : Warrior, Archer, Rogue, Mage
 enum class PlayerClass 
 {
 	Warrior,
@@ -15,6 +16,7 @@ enum class PlayerClass
 	Mage
 };
 
+// Contains the items : Sword, Bow, Dagger, Staff
 enum class Item 
 {
 	Sword,
@@ -23,6 +25,7 @@ enum class Item
 	Staff
 };
 
+// Class Player which contains and calculates the values : name , class , weapon, damage and defense rate
 class Player 
 {
 public:
@@ -194,6 +197,16 @@ private:
 	}
 };
 
+// Function which displays the menu
+void diplayMenu()
+{
+	std::cout << std::endl << "Main Menu: \n" << std::endl;
+	std::cout << "1. Help \n";
+	std::cout << "2. Start \n";
+	std::cout << "3. Exit \n" << std::endl;
+	std::cout << "~Enter your choice: ";
+}
+
 // Function which displays the stats of the player (name, class, weapon, health, attack and defense rate)
 void displayPlayer(const Player& player)
 {
@@ -214,6 +227,8 @@ int getPlayerChoice(int min, int max)
 	{
 		if (std::cin >> choice)
 		{
+
+			// If user enters a space after the number, throw an invalid choice error
 			if (choice >= min && choice <= max)
 			{
 				if (std::cin.peek() != '\n')
@@ -228,12 +243,16 @@ int getPlayerChoice(int min, int max)
 					return choice;
 				}
 			}
+
+			// If user enters a number but its not between min and max, throw an invalid choice error
 			else
 			{
 				std::cout << std::endl << "~Invalid choice. Try selecting a value between " << min << " and " << max << ". \n" << std::endl;
 				std::cout << "~Enter your choice: ";
 			}
 		}
+
+		// If user enters a letter for choice instead of number throw, an invalid choice error
 		else
 		{
 			std::cin.clear();
@@ -247,7 +266,10 @@ int getPlayerChoice(int min, int max)
 // Function which saves the names , classes and weapons of both players but also who won the battle to a file named Score.dat
 void saveResultsToFile(const std::string& player1Name, const std::string& player2Name, const std::string& winner)
 {
+	// Create a file named "Score.dat"
 	std::ofstream file("Score.dat", std::ios::app);
+
+	// If file is open then print the player's names and who won
 	if (file.is_open())
 	{
 		file << "Player 1: " << player1Name << std::endl;
@@ -261,4 +283,5 @@ void saveResultsToFile(const std::string& player1Name, const std::string& player
 		std::cout << "~Unable to open the file for saving the results." << std::endl;
 	}
 }
+
 #endif // BattleHeroClassSimulator_H
