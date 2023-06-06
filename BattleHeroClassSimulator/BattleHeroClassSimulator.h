@@ -7,7 +7,7 @@
 #include <fstream>
 #include <limits>
 
-// Contains the classes : Warrior, Archer, Rogue, Mage
+// Enumeration of player classes: Warrior, Archer, Rogue, Mage
 enum class PlayerClass 
 {
 	Warrior,
@@ -16,7 +16,7 @@ enum class PlayerClass
 	Mage
 };
 
-// Contains the items : Sword, Bow, Dagger, Staff
+// Enumeration of player items: Sword, Bow, Dagger, Staff
 enum class Item 
 {
 	Sword,
@@ -25,10 +25,11 @@ enum class Item
 	Staff
 };
 
-// Class Player which contains and calculates the values : name , class , weapon, damage and defense rate
+// Class representing a player, storing and calculating various attributes such as name, class, weapon, health, attack power, and defense rating.
 class Player 
 {
 public:
+	// Constructor to initialize the player with a name, class, and item.
 	Player(const std::string& playerName, PlayerClass playerClass, Item playerItem)
 		: name(playerName), heroClass(playerClass), item(playerItem)
 	{
@@ -112,7 +113,6 @@ private:
 	int attack_power;
 	float defense_rating;
 
-	// Generate random int
 	int generateRandomNumber(int min, int max)
 	{
 		static std::random_device rd;
@@ -121,7 +121,6 @@ private:
 		return distribution(rng);
 	}
 
-	// Generate random float
 	float generateRandomFloat(float min, float max)
 	{
 		static std::random_device rd;
@@ -130,7 +129,7 @@ private:
 		return distribution(rng);
 	}
 
-	// Calculate the attack power of the player depending which class, the stats for each class are generated randomly
+	// Calculate the attack power of the player depending which class
 	int calculateAttackPower()
 	{
 		int baseAttackPower = 0;
@@ -152,7 +151,7 @@ private:
 		return static_cast<int>(baseAttackPower * getItemMultiplier());
 	}
 
-	// Calculate the defense rating of the player depending which class, the stats for each class are generated randomly
+	// Calculate the defense rating of the player depending which class
 	float calculateDefenseRating()
 	{
 		float baseDefenseRating = 0.0f;
