@@ -37,34 +37,38 @@ int main()
             Item player1Item;
             Item player2Item;
 
-            // Player 1 Name , Class , Weapon choices
+            // Player 1 Name
             std::cout << std::endl << "~Enter Player 1 name: ";
             std::cin.ignore();
             getline(std::cin, player1Name);
 
+            // Player 1 Class
             std::cout << std::endl << "~Choose your class for " << player1Name << "\n" << std::endl;
             std::cout << "1: Warrior" << std::endl << "2: Archer" << std::endl << "3: Rogue" << std::endl << "4: Mage \n" << std::endl;
             std::cout << "~Enter your choice: ";
             int player1ClassChoice = getPlayerChoice(1, 4);
             player1Class = static_cast<PlayerClass>(player1ClassChoice - 1);
 
+            // Player 1 Weapon
             std::cout << std::endl << "~Choose your weapon for " << player1Name << "\n" << std::endl;
             std::cout << "1: Sword" << std::endl << "2: Bow" << std::endl << "3: Dagger" << std::endl << "4: Staff \n" << std::endl;
             std::cout << "~Enter your choice: ";
             int player1ItemChoice = getPlayerChoice(1, 4);
             player1Item = static_cast<Item>(player1ItemChoice - 1);
 
-            // Player 2 Name , Class , Weapon choices
+            // Player 2 Name
             std::cout << std::endl << "~Enter Player 2 name: ";
             std::cin.ignore();
             getline(std::cin, player2Name);
 
+            // Player 2 Class
             std::cout << std::endl << "~Choose your class for " << player2Name << "\n" << std::endl;
             std::cout << "1: Warrior" << std::endl << "2: Archer" << std::endl << "3: Rogue" << std::endl << "4: Mage \n" << std::endl;
             std::cout << "~Enter your choice: ";
             int player2ClassChoice = getPlayerChoice(1, 4);
             player2Class = static_cast<PlayerClass>(player2ClassChoice - 1);
 
+            // Player 2 Weapon
             std::cout << std::endl << "~Choose your weapon for " << player2Name << "\n" << std::endl;
             std::cout << "1: Sword" << std::endl << "2: Bow" << std::endl << "3: Dagger" << std::endl << "4: Staff \n" << std::endl;
             std::cout << "~Enter your choice: ";
@@ -131,18 +135,17 @@ int main()
                 std::cout << winner << std::endl;
             }
 
-            // Save the results to the file
-            saveResultsToFile(player1.getName(), player2.getName(), winner);
-
             // Ask if the user wants to print the results to the console
-            std::cout << "~Do you want to print the results to the console? (1: Yes / 2: No): \n" << std::endl;
+            std::cout << "~Do you want to print the results to the console and save them on the file named 'Score.dat' ? (1: Yes / 2 : No) : \n" << std::endl;
             std::cout << "~Enter your choice: ";
             int printChoice = getPlayerChoice(1, 2);
             std::cout << std::endl;
 
-            // Print the results
+            // Save the results on the file "Score.dat" and prints the results on the console
             if (printChoice == 1)
             {
+                saveResultsToFile(player1.getName(), player2.getName(), winner);
+
                 std::cout << "Player1: " << player1.getName() << std::endl;
                 std::cout << "Player2: " << player2.getName() << std::endl;
                 std::cout << "Winner: " << winner << std::endl;

@@ -269,7 +269,7 @@ void saveResultsToFile(const std::string& player1Name, const std::string& player
 	// Create a file named "Score.dat"
 	std::ofstream file("Score.dat", std::ios::app);
 
-	// If file is open then print the player's names and who won
+	// If file is open then print the player's names and who won to the file "Score.dat"
 	if (file.is_open())
 	{
 		file << "Player 1: " << player1Name << std::endl;
